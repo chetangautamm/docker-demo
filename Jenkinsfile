@@ -14,26 +14,19 @@ pipeline {
         stage('Building Image') { 
             steps { 
                 script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                    dockerImage = docker.build registry
                 }
             } 
         }
         stage('Deploy our image') { 
             steps { 
                 script { 
-                    docker.withRegistry( 'https://registry.hub.docker.com', 'git') { 
+                    docker.withRegistry( '', registryCredential) { 
                         dockerImage.push() 
                     }
                 } 
             }
         }
-        stage('Cleaning up') { 
-
-            steps { 
-
-                sh "docker rmi $registry:$BUILD_NUMBER" 
-            }
-        } 
     }
 }
 
