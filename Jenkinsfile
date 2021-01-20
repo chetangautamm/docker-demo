@@ -8,10 +8,10 @@ pipeline {
     stages { 
         stage('Git Clone') { 
             steps { 
-                git 'https://github.com/YourGithubAccount/YourGithubRepository.git' 
+                git 'https://github.com/chetangautamm/docker-demo.git' 
             }
         } 
-        stage('Building our image') { 
+        stage('Building Image') { 
             steps { 
                 script { 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
