@@ -9,6 +9,7 @@ pipeline {
         stage('Git Clone') { 
             steps { 
                 git 'https://github.com/chetangautamm/docker-demo.git' 
+                
             }
         } 
         stage('Building Image') { 
