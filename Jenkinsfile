@@ -8,7 +8,7 @@ pipeline {
     stages { 
         stage('Git Clone') { 
             steps { 
-                git 'https://github.com/chetangautamm/docker-demo' 
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0280c339-f1a8-48bc-b303-3ec7a661b546', url: 'https://github.com/chetangautamm/docker-demo.git']]])
                 
             }
         } 
