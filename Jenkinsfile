@@ -31,14 +31,14 @@ pipeline {
         
         stage('Stop Conatiners') {
             steps {
-                sh 'docker ps -f name=sippContainer -q | xargs --no-run-if-empty docker container stop'
+                sh 'docker ps -f name=latest -q | xargs --no-run-if-empty docker container stop'
                 sh 'docker container ls -a -fname=sippContainer -q | xargs -r docker container rm'
                 }
             } 
         stage('Docker Run') {
             steps{
                 script {
-                    dockerImage.run(" --name sippConatiner")
+                    dockerImage.run(" --name latest")
                     }
                 }
             }
